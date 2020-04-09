@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Söyle Gelsin</title>
+    <link rel="shortcut icon" type="image/png" href="https://i.imgyukle.com/2020/03/28/JzlG0v.jpg">
+
+    <link rel="stylesheet" href="/css/restaurantuye.css">
+    <script src='https://kit.fontawesome.com/a076d05399.js'></script>
+    <link rel="stylesheet" href="css/fontawesome-free-5.12.1-web/css/all.css">
+
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://netdna.bootstrapcdn.com/bootstrap/3.1.0/css/bootstrap.min.css">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.1.1/jquery.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/mustache.js/0.7.2/mustache.min.js"></script>
+
+</head>
+
+<body>
+    <form action="/restaurantuye" method="POST" enctype="multipart/form-data" style="    margin-top: 26px;
+    width: 660px;
+    margin-left: 340px;">
+
+        <div class="form-container sign-up-container">
+            <h1 style="     margin-left: 300px; color:#fc5c00;">Söyle Gelsin</h1>
+            <div class="social-container">
+                <a href="#" class="social"><i class="fab fa-facebook-f"></i></a>
+                <a href="#" class="social"><i class="fab fa-google-plus-g"></i></a>
+                <a href="#" class="social"><i class="fab fa-linkedin-in"></i></a>
+            </div>
+            <span>Hemen Kayıt Olun </span>
+            <input type="text" style="color: black;" name="mekan_Adi" placeholder="Mekanın Adını Giriniz"
+                required=”required” />
+            <input type="text" style="color: black;" name="uye_Adi_Soyadi" placeholder="Adınızı ve Soyadınızı Giriniz"
+                required=”required” />
+            <input type="password" style="color: black;" name="mekan_Sifre" placeholder="Şifre Belirleyin"
+                required=”required” />
+            <input type="text" style="color: black;" name="mekan_lokasyon" placeholder="Lokasyon Bilgisi Giriniz" />
+
+
+
+
+            <input type="file" placeholder="Resim Seç" multiple="false" accept="image/*" id="finput" name="İmageUpload"
+                onchange="Upload()" required="required">
+
+
+
+            <input type="time" style="    color: black;
+                margin-top: -10px; " name="mekan_acilisSaati" placeholder="Mekan Açılış Saatini Yazınız" />
+            <p class="acilissaati">
+                Mekan Açılış Saatini Yazınız
+            </p>
+            <p class="kapanissaati">
+                Mekan Kapanış Saatini Yazınız
+            </p>
+
+            <input type="time" style="color: black; font-weight: bold;" name="mekan_kapanisSaati"
+                placeholder="kapanis" />
+            <p class="paketsiparis">
+                Paket Sipariş Var mı ?
+            </p>
+
+            <p class="kategorisec">
+                Restaurant Kategorisi Seçiniz
+            </p>
+
+
+            <select name="kategori" style="color: black;
+            left: 807px;
+            height: 30px;
+            top: 502px;
+            font-weight: bold;
+            font-size: 15px;
+            position: absolute;" class="kategori">
+
+                <option value="Pizza">Pizza</option>
+                <option value="Balık">Balık</option>
+                <option value="Hamburger">Hamburger</option>
+                <option value="Çorba">Çorba</option>
+            </select>
+            <select name="paketSiparis" class="varmi" style="    width: 94px;
+            height: 30px;
+            position: absolute;
+            left: 345px;
+            top: 505px;
+            font-weight: bold;
+            font-size: 15px;
+            color: black;" id="varmi">
+                <option style="color: black;">Var</option>
+                <option style="color: black;">Yok</option>
+
+            </select>
+        </div>
+
+        <button href="Login" type="submit" style="    background-color: #fc5c00;
+        margin-top: 8px;
+        height: 50px;
+        font-size: 15px;
+        margin-left: 220px;
+                " class="mekanac">Mekan Aç</button>
+
+        <h1 style="    color: #fc5c00;
+        font-size: 28px;
+        margin-left: 173px;
+        font-variant-caps: all-small-caps;">Menünüzü Oluşturun</h1>
+        <div class="container dynamic-rows" style="    padding: 30px;
+        margin-left: -165px;
+        margin-top: 75px;">
+            <button type="button" class="btn btn-primary btn-xs add" style="position: absolute;
+    left: 115px;
+    width: 85px;
+    background:  #fc5c00;
+    border-color: white;
+    border-radius: 7px;">Ürün Ekle</button>
+            <button type="button" class="btn btn-default btn-xs remove">Ürün Sil</button> <span
+                class="msg text-danger"></span>
+        </div>
+
+
+        <script type="text/template" id="form_rows_tpl">
+  <div class="row">
+    <div class="col-lg-2">
+      <p>
+        <label for="FirstName_{{count}}">Ürün</label><br>
+        <input type="text" name="Urun_{{count}}" id="FirstName_{{count}}">
+      </p>
+    </div>
+    <div class="col-lg-2">
+      <p>  
+
+         
+        <label for="LastName_{{count}}">Fiyat</label><br>
+        <input type="number" name="Fiyat_{{count}}" id="LastName_{{count}}">
+      </p>
+    </div>
+    <div class="col-lg-2">
+      <p>
+        <label for="EmailAddress_{{count}}">Kategori</label><br>
+        
+            <select name="Kategori_{{count}}" style="height: 40px;"id="EmailAddress_{{count}}">
+                    <option style="color: black; ">Kebab</option>
+                    <option style="color: black;">Çorba</option>
+                    <option style="color: black;">Makarna</option>
+                    <option style="color: black;">Hamburger</option>
+                    <option style="color: black;">Et</option>
+                    <option style="color: black;">Tavuk</option>
+                    <option style="color: black;">Sulu Yemek</option>
+                    <option style="color: black;">İçecek</option>
+
+
+            </select>
+      </p>
+    </div>
+    <div class="col-lg-2">
+        <p>
+          <label style="    margin-left: -39px;" for="EmailAddress_{{count}}">Türü</label><br>
+          
+          <select name="Tur_{{count}}" style="    height: 40px;
+          margin-left: -40px;"id="EmailAddress_{{count}}">
+            <option style="color: black;">Yiyecek</option>
+            <option style="color: black;">İçecek</option>
+    </select>
+        </p>
+      </div>
+
+      <div class="col-lg-2">
+        <p>
+          <label  style="    margin-left: -95px;"for="EmailAddress_{{count}}">Servis</label><br>
+          
+          <select name="Servis_{{count}}" style="height: 40px;
+          margin-left: -95px;"id="EmailAddress_{{count}}">
+            <option style="color: black;">Sıcak</option>
+            <option style="color: black;">Soğuk</option>
+    </select>
+        </p>
+      </div>
+
+      
+      
+</div>
+
+        
+    </form>
+</script>
+</body>
+
+</html>
+
+
+
+
+
+<script>
+    var template = $("#form_rows_tpl").html(),
+        $target = $(".dynamic-rows"),
+        $btnAdd = $("button.add"),
+        $btnRemove = $("button.remove"),
+        $msg = $('.msg'),
+        max = 10,
+        count = 1,
+        inputRow = [];
+    $btnAdd.click(function (e) {
+        e.preventDefault();
+        addRows();
+    });
+    $btnRemove.click(function (e) {
+        e.preventDefault();
+        removeRows();
+    });
+    function addRows() {
+        if (count <= max) {
+            inputRow = {
+                count: count
+            }
+            var html = Mustache.to_html(template, inputRow);
+            $target.append(html);
+            count++;
+        } else {
+            $msg.text('too many fields!');
+        }
+    }
+    function removeRows() {
+        $target.find('.row').last().remove();
+        $msg.text('');
+        if (count <= 1) {
+            count = 1;
+        } else {
+            count--;
+        }
+    }
+    addRows();
+</script>

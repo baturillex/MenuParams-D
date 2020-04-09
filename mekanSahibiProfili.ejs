@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Profil</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/bulma/0.7.4/css/bulma.min.css" />
+    <link rel="stylesheet" type="text/css" href="/css/app.css" />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/css/bootstrap.min.css"
+        integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous" />
+    <script defer src="https://use.fontawesome.com/releases/v5.3.1/js/all.js"></script>
+    <script src="https://code.jquery.com/jquery-3.3.1.slim.min.js"
+        integrity="sha384-q8i/X+965DzO0rT7abK41JStQIAqVgRVzpbzo5smXKp4YfRvH+8abtTE1Pi6jizo"
+        crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.14.7/umd/popper.min.js"
+        integrity="sha384-UO2eT0CpHqdSJQ6hJty5KVphtPhzWj9WO1clHTMGa3JDZwrnQq4sF86dIHNDz0W1"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.3.1/js/bootstrap.min.js"
+        integrity="sha384-JjSmVgyd0p3pXB1rRibZUAYoIIy6OrQ6VrjIEaFf/nJGzIxFDsf4x0xIM+B07jRM"
+        crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="https://unpkg.com/purecss@1.0.1/build/pure-min.css"
+        integrity="sha384-oAOxQR6DkCoMliIh8yFnu25d7Eq/PHS21PClpwjOTeU2jRSq11vu66rf90/cZr47" crossorigin="anonymous">
+    <script type="text/javascript" src="home.js"></script>
+    <link href='https://fonts.googleapis.com/css?family=Open+Sans:300italic,400italic,600italic,400,300,600,700,800'
+        rel='stylesheet' type='text/css'>
+</head>
+
+<body>
+    <!-- NAVBAR BAŞLANGIÇ-->
+    <nav class="navbar navbar-expand-lg navbar-light #2b5ca2">
+        <a class="navbar-brand" href="#">Söyle Gelsin</a>
+        <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
+            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+        </button>
+
+
+
+        <div class="collapse navbar-collapse" id="navbarSupportedContent">
+
+            <ul class="navbar-nav mr-auto">
+                <li class="nav-item ">
+                    <a class="nav-link" style="color:white;" href="#">Anasayfa <span
+                            class="sr-only">(current)</span></a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " style="color:white;" href="#">Bize Ulaşın</a>
+                </li>
+
+                <li class="nav-item">
+                    <a class="nav-link " style="color:white;" href="#">Şikayet</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " style="color:white;" href="#">Duyurular</a>
+                </li>
+                <li class="nav-item">
+                    <a class="nav-link " style="color:white;" href="#">Profilim</a>
+                </li>
+            </ul>
+            <form class="form-inline my-2 my-lg-0">
+                <input class="form-control mr-sm-2" type="search" placeholder="Mekan Ara" aria-label="Search">
+                <button class="btn btn-outline-light my-2 my-sm-0" type="submit">Ara</button>
+                <div class="dropdown" style="    margin-left: 50px;">
+                    <span>Kategoriler</span>
+                    <div class="dropdown-content" style="color:black;">
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="hamburger">Hamburger</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="balik">Balık</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="doner">Döner</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="pide">Pide</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="fastfood">Fast Food</a>
+                        <a class="nav-link " style="color: white;     margin-top: -30px;" href="pizza">Pizza</a>
+
+                    </div>
+                </div>
+
+
+
+
+
+
+
+            </form>
+
+
+            <div class="portfoliocard" style="margin-top: 1230px;
+            margin-left: -590px;
+            height: 1000px;">
+                <button class="guncellemeButonu" id="myBtn">
+                    <img src="https://i.hizliresim.com/RyvY8F.png" alt="">
+                </button>
+
+                <div class="left_col" style="height: 580px;">
+                    <!---
+                     <h class="adiSoyadi">Açılış Saati</h>
+                    <h class="eposta">Kapanış Saati</h>
+                    -->
+                </div>
+                <div class="right_col" style="height: 580px;">
+                    <h2 class="name" name="mekaninadi" style="    margin-left: -50px;">Mekan Adı>
+
+                    </h2>
+                    <form id="add_event" action="/mekanSahibiProfili" method="post" class="needs-validation">
+                        <% veri.forEach(function(ss){ %>
+                        <input type="hidden" name="guncellenecekEtkinlikId" value="<%=ss.id%>">
+                        <div id="myModal" class="modal">
+                            <div class="modal-content" style="    width: 810px;
+                                height: 450px;">
+                                <span class="close">&times;</span>
+                                <h1 class="popupbaslik">Bilgilerinizi Güncelleyebilirsiniz.</h1>
+                                <input type="time" class="popupacilissaati" name="mekan_acilis" />
+                                <h1 class="acilissaatipopup">
+                                    Mekan Açılış Saatini Yazınız
+                                </h1>
+                                <input type="time" class="popupkapanissaati" name="mekan_kapanis" />
+                                <h1 class="kapanissaatipopup">
+                                    Mekan Kapanış Saatini Yazınız
+                                </h1>
+                                <h1 class="popupvarmiyokmu">Paket Sipariş Var mı?</h1>
+                                <div class="select is-rounded  varmiyokmupaket">
+                                    <select name="paketsiparisvarmi">
+                                        <option>Var</option>
+                                        <option>Yok</option>
+                                    </select>
+                                </div>
+                                <h1 class="popuplokasyon">Adresi yazınız</h1>
+                                <input class="input lokasyonpopup" style=" width: 320px;
+                                    margin-top: 40px;
+                                    height: 30px;
+                                    background: whitesmoke;" name="yeniadres" type="text"
+                                    placeholder="Yeni Adresinizi Yazınız">
+                                <h1 class="popupkategori">Kategorini Güncelle</h1>
+                                <div class="select is-rounded  kategorigüncellepopup">
+                                    <select name="kategoriguncelle">
+                                        <option>Hamburger</option>
+                                        <option>Pizza</option>
+                                        <option>Çorba</option>
+                                        <option>Balık</option>
+                                    </select>
+                                </div>
+                                <h1 class="popupyeniisim">Yeni İsim Soyisim</h1>
+                                <input class="input lokasyonpopup" style="    width: 320px;
+                                    margin-top: -3px;
+                                    height: 30px;
+                                    background: whitesmoke;" type="text" name="isimsoyisim"
+                                    placeholder="Yeni Adresinizi Yazınız">
+                                <h1 class="popupyeniisim">Mekan Adını Değiştir</h1>
+                                <input class="input lokasyonpopup" style="    width: 320px;
+                                    margin-top: -3px;
+                                    height: 30px;
+                                    background: whitesmoke;" type="text" name="mekanadi"
+                                    placeholder="Mekanınızın Adını Değiştirin">
+                                <button class="guncellepopupbuton" type="submit">Güncelle</button>
+                            </div>
+                    </form>
+                </div>
+                <h3 class="location"></h3>
+                <div class="profilim" style="color: black;">
+
+                    </li>
+                </div>
+            </div>
+
+            <!--Trigger-->
+        </div>
+
+        <h1 style="color: red;
+        font-size: 30px;
+        position: absolute;
+        margin-left: 250px;
+        margin-top: 350px;">Fiyat : <%=ss.Fiyat%> </h1>
+
+
+
+        <% }); %>
+
+
+
+    </nav>
+    <!-- NAVBAR BİTİŞ-->
+
+    <!--         table contents starts here -->
+    <div class="col-8 siparislerim" style="width: 760px;">
+        <table class="table table-dark">
+            <thead>
+                <div class="tablecolumn" style="color: white;">
+                    <tr class="tableColumns" style="color: white;">
+                        <th style="color: white;">#</th>
+                        <th style="color: white;">Sipariş Özet</th>
+                        <th style="color: white;">Ödeme Şekli</th>
+                        <th style="color: white;">Adres</th>
+                        <th style="color: white;">Mekan Adı</th>
+                        <th style="color: white;">Total Fiyat</th>
+                    </tr>
+                </div>
+
+            </thead>
+            <tbody id="rows">
+                <tr>
+                    <th style="color: white;">1</th>
+                    <td style="color: white;">Hamburger</td>
+                    <td style="color: white;">Nakit</td>
+                    <td style="color: white;">Çengelköy Sultanmurat Eryiğit sk</td>
+                    <td style="color: white;">Bülent Börek</td>
+                    <td style="color: white;">90 TL</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">İd</th>
+                    <td style="color: white;">Çorba</td>
+                    <td style="color: white;">Kredi</td>
+                    <td style="color: white;">Üsküdar Bahçelievler</td>
+                    <td style="color: white;">Kebabçı Ali</td>
+                    <td style="color: white;">17 TL</td>
+                </tr>
+                <tr>
+                    <th style="color: white;" scope="row">3</th>
+                    <td>Pizza</td>
+                    <td>Nakit</td>
+                    <td>Yavuztürk</td>
+                    <td>Papa Johns</td>
+                    <td>74 TL</td>
+                </tr>
+            </tbody>
+
+            <tbody id="rows">
+                <tr>
+                    <th style="color: white;">1</th>
+                    <td style="color: white;">Hamburger</td>
+                    <td style="color: white;">Nakit</td>
+                    <td style="color: white;">Çengelköy Sultanmurat Eryiğit sk</td>
+                    <td style="color: white;">Bülent Börek</td>
+                    <td style="color: white;">90 TL</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">İd</th>
+                    <td style="color: white;">Çorba</td>
+                    <td style="color: white;">Kredi</td>
+                    <td style="color: white;">Üsküdar Bahçelievler</td>
+                    <td style="color: white;">Kebabçı Ali</td>
+                    <td style="color: white;">17 TL</td>
+                </tr>
+                <tr>
+                    <th style="color: white;" scope="row">3</th>
+                    <td>Pizza</td>
+                    <td>Nakit</td>
+                    <td>Yavuztürk</td>
+                    <td>Papa Johns</td>
+                    <td>74 TL</td>
+                </tr>
+            </tbody>
+            <tbody id="rows">
+                <tr>
+                    <th style="color: white;">1</th>
+                    <td style="color: white;">Hamburger</td>
+                    <td style="color: white;">Nakit</td>
+                    <td style="color: white;">Çengelköy Sultanmurat Eryiğit sk</td>
+                    <td style="color: white;">Bülent Börek</td>
+                    <td style="color: white;">90 TL</td>
+                </tr>
+                <tr>
+                    <th style="color: white;">İd</th>
+                    <td style="color: white;">Çorba</td>
+                    <td style="color: white;">Kredi</td>
+                    <td style="color: white;">Üsküdar Bahçelievler</td>
+                    <td style="color: white;">Kebabçı Ali</td>
+                    <td style="color: white;">17 TL</td>
+                </tr>
+                <tr>
+                    <th style="color: white;" scope="row">3</th>
+                    <td>Pizza</td>
+                    <td>Nakit</td>
+                    <td>Yavuztürk</td>
+                    <td>Papa Johns</td>
+                    <td>74 TL</td>
+                </tr>
+            </tbody>
+        </table>
+    </div>
+
+
+
+
+    <footer class="footer" style="background-color: #204f91; margin-top: 594px;">
+        <div class="footer-left col-md-4 col-sm-6">
+            <p class="about">
+                <span> Techno EVENT</span> İnsanları monoton yaşantıdan kurtaracak projemizle karşınızdayız,
+                her gün aynı toplantılardan her gün aynı ortamlardan bunalan insanlar için,
+                dünyanın her yerinde ki organizasyonlarda bulunabilirsiniz.
+                Eğitim,bilişim,sanayi ve sanat gibi bir çok dalda etkinliklere katılacaksınız.
+            </p>
+
+        </div>
+        <div class="footer-center col-md-4 col-sm-6">
+            <div>
+                <i class="fa fa-map-marker"></i>
+                <p><span>Üsküdar 5450</span> İstanbul</p>
+            </div>
+            <div>
+                <i class="fa fa-phone"></i>
+                <p> 0(216) 943 2323</p>
+            </div>
+            <div>
+                <i class="fa fa-envelope"></i>
+                <p><a href="#"> technoevent@gmail.com</a></p>
+            </div>
+        </div>
+        <div class="footer-right col-md-4 col-sm-6">
+            <img src="">
+            <p class="menu">
+                <a href="#"> Anasayfa</a> |
+                <a href="#"> Hakkımızda</a> |
+                <a href="#"> Sponsorlarımız</a> |
+                <a href="#"> Oturum Aç</a> |
+            </p>
+            <p class="name"> TechnoEvent &copy; 2019</p>
+        </div>
+    </footer>
+
+
+
+</body>
+<script>
+    // Popup Al
+    var modal = document.getElementById('myModal');
+    // Kipi açan düğmeyi al
+    var btn = document.getElementById("myBtn");
+    // Kipi kapatan <span> öğesini edinin
+    var span = document.getElementsByClassName("close")[0];
+    // Kullanıcı düğmeyi tıklattığında
+    btn.onclick = function () {
+        modal.style.display = "block";
+    }
+    // Kullanıcı <span> (x) düğmesini tıkladığında, popup
+    span.onclick = function () {
+        modal.style.display = "none";
+    }
+    // Kullanıcı modelden başka herhangi bir yeri tıklattıysa, onu kapatın.
+    window.onclick = function (event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
+</script>
+
+</html>
